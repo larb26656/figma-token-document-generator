@@ -5,7 +5,8 @@
   "main": "code.js",
   "scripts": {
     "build": "webpack --mode=production",
-    "watch": "webpack --mode=production --watch"
+    "watch": "webpack --mode=production --watch",
+    "release": "node ci/release.js"
   },
   "author": "",
   "license": "",
@@ -26,6 +27,7 @@
   },
   "dependencies": {
     "@figma/plugin-typings": "^1.65.0",
-    "figma-plugin-ds": "^1.0.1"
+    "figma-plugin-ds": "^1.0.1",
+    "tar": "^7.2.0"
   }
 }
