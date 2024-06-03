@@ -1,10 +1,29 @@
-<style>
-  @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100;200;300;400;500;600;700;800;900&display=swap");
-</style>
-<div class="header-section">
-  <p class="title">Figma generate token doc plugin v.1.0.0</p>
+<div class="overlay" id="overlay" hidden>
+  <div class="loader"></div>
 </div>
-<div class="content-section">
-  <button id="generate-btn" class="btn">Generate</button>
-  <div class="space-1"></div>
+
+<div class="flex column h-100vh">
+  <div class="content flex-grow">
+    <div>
+      <label for="prefix-input" class="label">Prefix</label>
+      <input
+        type="input"
+        id="prefix-input"
+        class="input__field"
+        placeholder="Prefix of token"
+      />
+    </div>
+    <div class="mb-xsmall">
+      <label for="token-resolver-input" class="label">Token Resolver</label>
+      <select id="token-resolver-input" class="input__field">
+        <option value="token-studio">Token studio</option>
+        <option value="kebeb-case">Kebeb case</option>
+      </select>
+    </div>
+
+    <button id="generate-button" class="button button--secondary">
+      Generate
+    </button>
+  </div>
+  <footer class="footer type">Version 0.0.1</footer>
 </div>

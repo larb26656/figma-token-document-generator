@@ -26,6 +26,6 @@
   },
   "dependencies": {
     "@figma/plugin-typings": "^1.65.0",
-    "jszip": "^3.10.1"
+    "figma-plugin-ds": "^1.0.1"
   }
 }

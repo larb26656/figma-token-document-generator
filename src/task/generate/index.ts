@@ -1,2 +1,1 @@
-export * from './generate-task';
-export * from './model';
+export * from "./generate-task";

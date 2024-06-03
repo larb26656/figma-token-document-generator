@@ -1,10 +1,7 @@
 import { TokenDetail } from "./model";
+import { resolveToken } from "./resolver";
 
 const tokenBlackList = ["version", "hash", ""];
-
-function normalizeToken(token: string) {
-  return token.replaceAll('"', "");
-}
 
 export function collectTokenUsages(node: BaseNode): TokenDetail[] {
   const tokenUsageString = node.getSharedPluginDataKeys("tokens");
@@ -21,7 +18,7 @@ export function collectTokenUsages(node: BaseNode): TokenDetail[] {
 
     tokenDetails.push({
       usage: tokenUsage,
-      token: normalizeToken(token),
+      token: resolveToken(token),
     });
   }
 

@@ -1,19 +1,15 @@
 import {
-  createFrame,
-  createText,
-  findColumnFromComponentSet,
   getCurrentSelection,
-  setAutoLayout,
   sortComponentSetByAxis,
 } from "../../utils/figma-helper";
-import { createDoc, createMainFrame, createRowFrame } from "./doc";
-import { createComponentDocFrame } from "./doc/component-doc";
-import { Doc, Setting } from "./model";
+import { createDoc } from "./doc";
+import { Setting, updateSetting } from "./setting";
 
 export namespace GenerateTask {
-  export async function generate() {
+  export async function generate(setting: Setting) {
+    updateSetting(setting);
+
     const currentSelection = getCurrentSelection();
-    // type check
     if (!currentSelection) throw new Error("No selection");
 
     if (

@@ -1,2 +1,2 @@
-export * from './model';
-export * from './token-generator';
+export * from "./model";
+export * from "./generator";
