@@ -26,7 +26,7 @@ export async function createComponentDocFrame(component: ComponentNode) {
   const detailFrame = createFrame("Detail");
   setAutoLayout(detailFrame);
 
-  const tokenFrame = createAllTokenDocFrame(instance);
+  const tokenFrame = await createAllTokenDocFrame(instance);
   detailFrame.appendChild(tokenFrame);
   contentFrame.appendChild(componentFrame);
   contentFrame.appendChild(detailFrame);

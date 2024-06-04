@@ -7,7 +7,7 @@ import { TokenDetail, collectTokenUsages } from "../token";
 
 export function createTokenDocFrame(
   node: BaseNode,
-  tokenUsages: TokenDetail[]
+  tokenUsages: Record<string, string>
 ) {
   const frame = createFrame("Codebox");
   frame.fills = [{ type: "SOLID", color: { r: 0, g: 0, b: 0 } }];
@@ -16,8 +16,8 @@ export function createTokenDocFrame(
   let tokenDocText = "";
   tokenDocText += node.name + "\n";
   tokenDocText += "\n";
-  tokenDocText += tokenUsages
-    .map((tokenUsage) => `${tokenUsage.usage} : ${tokenUsage.token}`)
+  tokenDocText += Object.keys(tokenUsages)
+    .map((key) => `${key} : ${tokenUsages[key]}`)
     .join("\n");
 
   const codeText = createText(tokenDocText, "JetBrains Mono", "Regular");
@@ -27,13 +27,13 @@ export function createTokenDocFrame(
   return frame;
 }
 
-export function appendDeepTokenDocFrame(
+export async function appendDeepTokenDocFrame(
   node: ChildrenMixin,
   tokenDocFrames: FrameNode[]
-): void {
-  const tokenUsages = collectTokenUsages(node as BaseNode);
+): Promise<void> {
+  const tokenUsages = await collectTokenUsages(node as SceneNode);
 
-  if (tokenUsages.length) {
+  if (Object.keys(tokenUsages).length) {
     const frame = createTokenDocFrame(node as BaseNode, tokenUsages);
     tokenDocFrames.push(frame);
   }
@@ -43,16 +43,16 @@ export function appendDeepTokenDocFrame(
   }
 
   for (const child of node.children) {
-    appendDeepTokenDocFrame(child as ChildrenMixin, tokenDocFrames);
+    await appendDeepTokenDocFrame(child as ChildrenMixin, tokenDocFrames);
   }
 }
 
-export function createAllTokenDocFrame(instance: InstanceNode) {
+export async function createAllTokenDocFrame(instance: InstanceNode) {
   const frame = createFrame(`${instance.name} doc`);
   setAutoLayout(frame);
 
   const tokenFrames: FrameNode[] = [];
-  appendDeepTokenDocFrame(instance, tokenFrames);
+  await appendDeepTokenDocFrame(instance, tokenFrames);
 
   for (const tokenFrame of tokenFrames) {
     frame.appendChild(tokenFrame);

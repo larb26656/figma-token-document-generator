@@ -19,7 +19,7 @@ async function delay(milliseconds: number) {
 figma.ui.onmessage = async (msg) => {
   try {
     if (msg.type === BackendConnectorEvent.excuteGenerate) {
-      await delay(1000);
+      // await delay(1000);
       await setupFont();
       await GenerateTask.generate(msg.data as Setting);
     }

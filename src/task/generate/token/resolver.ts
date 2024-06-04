@@ -1,8 +1,12 @@
 import { toKebabCase } from "../../../utils/case";
 import { getSetting } from "../setting";
 
+export function transformVariableToToken(variable: string): string {
+  return variable.replace(/\//g, ".");
+}
+
 function normalizeToken(token: string): string {
-  return token.replaceAll('"', "");
+  return token.replace(/"/g, "");
 }
 
 function changeTokenCase(token: string): string {

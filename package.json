@@ -26,7 +26,7 @@
     "webpack-dev-server": "^4.15.0"
   },
   "dependencies": {
-    "@figma/plugin-typings": "^1.65.0",
+    "@figma/plugin-typings": "^1.94.0",
     "figma-plugin-ds": "^1.0.1",
     "tar": "^7.2.0"
   }
