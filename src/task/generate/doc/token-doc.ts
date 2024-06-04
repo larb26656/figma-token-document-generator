@@ -3,7 +3,7 @@ import {
   createText,
   setAutoLayout,
 } from "../../../utils/figma-helper";
-import { collectTokenUsages } from "../token";
+import { collectTokenUsages } from "../token/collector";
 
 export function createTokenDocFrame(
   node: BaseNode,
