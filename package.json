@@ -1,6 +1,6 @@
 {
   "name": "figma-token-document-generator",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A Token document generator tool for figma",
   "main": "code.js",
   "scripts": {
