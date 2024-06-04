@@ -18,16 +18,16 @@ document.getElementById("generate-button").onclick = () => {
   const prefixInput = document.getElementById(
     "prefix-input"
   ) as HTMLInputElement;
-  const tokenResolverSelect = document.getElementById(
-    "token-resolver-input"
+  const tokenTransformationSelect = document.getElementById(
+    "token-transformation-input"
   ) as HTMLSelectElement;
 
   const prefix = prefixInput.value;
-  const tokenResolver = tokenResolverSelect.value;
+  const tokenTransformation = tokenTransformationSelect.value;
 
   BackendConnector.excuteGenerate({
     prefix: prefix,
-    tokenResolve: tokenResolver as "token-studio" | "kebeb-case",
+    tokenTransformation: tokenTransformation as "token-studio" | "kebeb-case",
   });
 };
 

@@ -1,4 +1,4 @@
 export interface Setting {
   prefix: string;
-  tokenResolve: "token-studio" | "kebeb-case";
+  tokenTransformation: "token-studio" | "kebeb-case";
 }

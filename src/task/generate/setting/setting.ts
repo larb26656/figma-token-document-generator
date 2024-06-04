@@ -2,7 +2,7 @@ import { Setting } from "./model";
 
 let _setting: Setting = {
   prefix: "",
-  tokenResolve: "token-studio",
+  tokenTransformation: "token-studio",
 };
 
 export function getSetting() {

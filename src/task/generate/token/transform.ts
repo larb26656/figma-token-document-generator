@@ -12,9 +12,9 @@ function normalizeToken(token: string): string {
 function changeTokenCase(token: string): string {
   const setting = getSetting();
 
-  if (setting.tokenResolve === "kebeb-case") {
+  if (setting.tokenTransformation === "kebeb-case") {
     return toKebabCase(token);
-  } else if (setting.tokenResolve === "token-studio") {
+  } else if (setting.tokenTransformation === "token-studio") {
     return token;
   }
 }
