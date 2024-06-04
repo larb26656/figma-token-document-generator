@@ -3,7 +3,6 @@ import {
   createText,
   findColumnFromComponentSet,
   setAutoLayout,
-  sortComponentSetByAxis,
 } from "../../../utils/figma-helper";
 import { createComponentDocFrame } from "./component-doc";
 

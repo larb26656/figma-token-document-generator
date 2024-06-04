@@ -10,16 +10,9 @@ async function setupFont() {
   await figma.loadFontAsync({ family: "JetBrains Mono", style: "Regular" });
 }
 
-async function delay(milliseconds: number) {
-  return new Promise((resolve) => {
-    setTimeout(resolve, milliseconds);
-  });
-}
-
 figma.ui.onmessage = async (msg) => {
   try {
     if (msg.type === BackendConnectorEvent.excuteGenerate) {
-      // await delay(1000);
       await setupFont();
       await GenerateTask.generate(msg.data as Setting);
     }

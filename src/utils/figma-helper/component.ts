@@ -36,10 +36,10 @@ export function findColumnFromComponentSet(
   }
 
   let column = 0;
-  let currentY = componentSet[0].y;
+  const currentY = componentSet[0].y;
 
   for (let i = 0; i < componentSet.length; i++) {
-    let component = componentSet[i];
+    const component = componentSet[i];
 
     if (currentY !== component.y) {
       return column;

@@ -1,4 +1,3 @@
-import { TokenDetail } from "./model";
 import { resolveToken, transformVariableToToken } from "./resolver";
 
 const tokenBlackList = ["version", "hash", ""];
