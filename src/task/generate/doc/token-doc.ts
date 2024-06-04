@@ -5,24 +5,72 @@ import {
 } from "../../../utils/figma-helper";
 import { collectTokenUsages } from "../token/collector";
 
+function createTokenRow(usage: string, token: string): FrameNode {
+  const frame = createFrame("row");
+  frame.fills = [];
+  frame.layoutMode = "HORIZONTAL";
+  frame.primaryAxisSizingMode = "AUTO";
+  frame.counterAxisSizingMode = "AUTO";
+  frame.itemSpacing = 10;
+
+  const usageText = createText(`${usage}:`, "JetBrains Mono", "Regular");
+  usageText.fills = [{ type: "SOLID", color: { r: 1, g: 1, b: 1 } }];
+
+  frame.appendChild(usageText);
+
+  const tokenText = createText(token, "JetBrains Mono", "Regular");
+  tokenText.fills = [
+    {
+      type: "SOLID",
+      color: {
+        r: 187 / 255,
+        g: 154 / 255,
+        b: 247 / 255,
+      },
+    },
+  ];
+
+  frame.appendChild(tokenText);
+
+  return frame;
+}
+
 export function createTokenDocFrame(
   node: BaseNode,
   tokenUsages: Record<string, string>
 ) {
   const frame = createFrame("Codebox");
-  frame.fills = [{ type: "SOLID", color: { r: 0, g: 0, b: 0 } }];
-  setAutoLayout(frame, "HORIZONTAL");
+  frame.fills = [
+    {
+      type: "SOLID",
+      color: {
+        r: 36 / 255,
+        g: 40 / 255,
+        b: 59 / 255,
+      },
+    },
+  ];
+  frame.layoutMode = "VERTICAL";
+  frame.primaryAxisSizingMode = "AUTO";
+  frame.counterAxisSizingMode = "AUTO";
+  frame.paddingLeft = 10;
+  frame.paddingRight = 10;
+  frame.paddingTop = 10;
+  frame.paddingBottom = 10;
+  frame.cornerRadius = 4;
 
-  let tokenDocText = "";
-  tokenDocText += node.name + "\n";
-  tokenDocText += "\n";
-  tokenDocText += Object.keys(tokenUsages)
-    .map((key) => `${key} : ${tokenUsages[key]}`)
-    .join("\n");
+  const nodeNameText = createText(`${node.name}:`, "JetBrains Mono", "Regular");
+  nodeNameText.fills = [{ type: "SOLID", color: { r: 1, g: 1, b: 1 } }];
+  frame.appendChild(nodeNameText);
 
-  const codeText = createText(tokenDocText, "JetBrains Mono", "Regular");
-  codeText.fills = [{ type: "SOLID", color: { r: 1, g: 1, b: 1 } }];
-  frame.appendChild(codeText);
+  const blank = createText(``);
+  frame.appendChild(blank);
+  frame.appendChild(blank);
+
+  Object.keys(tokenUsages).forEach((key) => {
+    const row = createTokenRow(key, tokenUsages[key]);
+    frame.appendChild(row);
+  });
 
   return frame;
 }
